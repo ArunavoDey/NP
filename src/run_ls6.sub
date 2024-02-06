@@ -1,0 +1,332 @@
+#!/bin/bash
+#SBATCH -A ASC23014
+#SBATCH -J APM           # Job name
+#SBATCH -o APM.o%j       # Name of stdout output file
+#SBATCH -e APM.e%j       # Name of stderr error file
+#SBATCH -p development    # Queue (partition) name
+#SBATCH -N 1             # Total # of nodes 
+#SBATCH -n 5             # Total # of mpi tasks
+#SBATCH -t 01:00:00       # Run time (hh:mm:ss
+
+
+date
+source ../../dev/bin/activate
+
+#srun -N 1 -n 1 python3 driver.py "crime" "linear_probing" 5
+#srun -N 1 -n 1 python3 driver.py "crime" "fine_tuning" 5
+#srun -N 1 -n 1 python3 driver.py "crime" "random_forrest" 5
+#srun -N 1 -n 1 python3 driver.py "crime" "stacked_model" 5
+#srun -N 1 -n 1 python3 driver.py "crime" "IPT" 5
+#srun -N 1 -n 1 python3 driver.py "crime" "random_forrest" 5
+
+#srun -N 1 -n 1 python3 driver.py "skillcraft" "linear_probing" 5
+#srun -N 1 -n 1 python3 driver.py "skillcraft" "fine_tuning" 5
+#srun -N 1 -n 1 python3 driver.py "skillcraft" "random_forrest" 5
+#srun -N 1 -n 1 python3 driver.py "skillcraft" "stacked_model" 5
+#srun -N 1 -n 1 python3 driver.py "skillcraft" "IPT" 5
+#srun -N 1 -n 1 python3 driver.py "skillcraft" "random_forrest" 5
+
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" 5
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" 5
+#mpiexec -n 5 python3 driver.py "crime" "stacked_model" 5
+#mpiexec -n 5 python3 driver.py "crime" "random_forrest" 5
+#mpiexec -n 5 python3 driver.py "crime" "IPT" 5
+#mpiexec -n 1 python3 driver.py "housing" "index_maker" 5
+#mpiexec -n 5 python3 driver.py "housing" "linear_probing" 5
+#mpiexec -n 5 python3 driver.py "housing" "fine_tuning" 5
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" 5
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-2.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-1.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-8.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-2.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-4.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "index_maker" "/fslda/yaml/cg.yaml"
+#mpiexec -n 1 python3 driver.py "perfvar" "source_only" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/comd.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "index_maker" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "fine_tuning" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "IPT" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "stacked_model" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "k_regressor" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "TransferIPT" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "target_only" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "random_forrest" "/fslda/yaml/cg.yaml"
+
+
+
+
+#mpiexec -n 5 python3 driver.py "perfvar" "index_maker" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 1 python3 driver.py "perfvar" "source_only" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "fine_tuning" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "IPT" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "stacked_model" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "k_regressor" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "TransferIPT" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "target_only" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "random_forrest" "/fslda/yaml/kripke.yaml"
+
+#mpiexec -n 5 python3 driver.py "perfvar" "fine_tuning" "/fslda/yaml/comd.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "stacked_ipt" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "stacked_ipt" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "stacked_ipt" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "fine_tuning" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 14 python3 driver.py "perfvar" "train_transformer" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "IPT" "/fslda/yaml/comd.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "linear_probing" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "fine_tuning" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "fine_tuning" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "fine_tuning" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "target_only" "/fslda/yaml/cg.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "target_only" "/fslda/yaml/ft.yaml"
+#mpiexec -n 5 python3 driver.py "perfvar" "target_only" "/fslda/yaml/kripke.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "linear_probing" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "fine_tuning" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "target_only" "/fslda/yaml/skillcraft-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_model" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "k_regressor" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "TransferIPT" "/fslda/yaml/skillcraft-config-9.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-9.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "target_only" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-6.yaml"
+
+
+
+#mpiexec -n 5 python3 driver.py "crime" "index_maker" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" "/fslda/yaml/crime-config-18.yaml"
+
+
+#mpiexec -n 5 python3 driver.py "crime" "index_maker" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" "/fslda/yaml/crime-config-25.yaml"
+
+#mpiexec -n 5 python3 driver.py "crime" "index_maker" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" "/fslda/yaml/crime-config-12.yaml"
+
+#mpiexec -n 5 python3 driver.py "crime" "index_maker" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-6.yaml"
+
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "linear_probing" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "fine_tuning" "/fslda/yaml/crime-config-12.yaml"
+
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-12.yaml"
+
+
+#mpiexec -n 5 python3 driver.py "crime" "IPT" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "IPT" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "IPT" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-12.yaml"
+
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-6.yaml"
+
+
+
+#mpiexec -n 5 python3 driver.py "crime" "k_regressor" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_model" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "KIPT" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "KIPT" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "KIPT" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "KIPT" "/fslda/yaml/crime-config-18.yaml"
+
+
+
+#mpiexec -n 5 python3 driver.py "crime" "IPT" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "k_regressor" "/fslda/yaml/crime-config-182.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_model" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "TransferIPT" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "target_only" "/fslda/yaml/crime-config-18.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "random_forrest" "/fslda/yaml/crime-config-18.yaml"
+
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "linear_probing" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "fine_tuning" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_model" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "k_regressor" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "target_only" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_ipt" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "target_only" "/fslda/yaml/skillcraft-config-6.yaml"
+
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "source_only" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/fslda/yaml/skillcraft-config-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-6.yaml"
+
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "source_only" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "index_maker" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "IPT" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "stacked_ipt" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "res_ipt" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "tar_ipt" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "target_only" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 1 python3 driver.py "xsb-omc" "source_only" "/fslda/yaml/xsb-omc-1.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "index_maker" "/fslda/yaml/xsb-omc-1.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "nUIPT" "/fslda/yaml/xsb-omc-1.yaml"
+#mpiexec -n 1 python3 driver.py "xsb-omc" "source_only" "/fslda/yaml/xsb-omc-2.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "index_maker" "/fslda/yaml/xsb-omc-2.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "nUIPT" "/fslda/yaml/xsb-omc-2.yaml"
+#mpiexec -n 1 python3 driver.py "xsb-omc" "source_only" "/fslda/yaml/xsb-omc-3.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "index_maker" "/fslda/yaml/xsb-omc-3.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "nUIPT" "/fslda/yaml/xsb-omc-3.yaml"
+#mpiexec -n 1 python3 driver.py "xsb-omc" "source_only" "/fslda/yaml/xsb-omc-4.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "index_maker" "/fslda/yaml/xsb-omc-4.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "nUIPT" "/fslda/yaml/xsb-omc-4.yaml"
+
+
+mpiexec -n 1 python3 driver.py "skillcraft" "source_only" "/NP/yaml/skillcraft-APM-6.yaml"
+mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/NP/yaml/skillcraft-APM-6.yaml"
+mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-APM-6.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "nUIPT" "/fslda/yaml/skillcraft-APM-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "nUIPT" "/fslda/yaml/skillcraft-APM-4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "nUIPT" "/fslda/yaml/skillcraft-APM-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "nUIPT" "/fslda/yaml/skillcraft-APM-6.yaml"
+
+
+#mpiexec -n 1 python3 driver.py "rnn_bench" "source_only" "/fslda/yaml/rnn_bench.yaml"
+#mpiexec -n 5 python3 driver.py "rnn_bench" "index_maker" "/fslda/yaml/rnn_bench.yaml"
+#mpiexec -n 5 python3 driver.py "rnn_bench" "linear_probing" "/fslda/yaml/rnn_bench.yaml"
+#mpiexec -n 5 python3 driver.py "rnn_bench" "fine_tuning" "/fslda/yaml/rnn_bench.yaml"
+#mpiexec -n 5 python3 driver.py "rnn_bench" "nUIPT" "/fslda/yaml/rnn_bench.yaml"
+
+
+
+#mpiexec -n 5 python3 driver.py "xsb-omc" "index_maker" "/fslda/yaml/xsb-omc-3.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "IPT" "/fslda/yaml/xsb-omc-3.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "stacked_ipt" "/fslda/yaml/xsb-omc-3.yaml"
+#mpiexec -n 5 python3 driver.py "xsb-omc" "UIPT" "/fslda/yaml/xsb-omc-3.yaml"
+
+
+#mpiexec -n 1 python3 driver.py "IA" "source_only" "/fslda/yaml/IA.yaml"
+#mpiexec -n 5 python3 driver.py "IA" "IPT" "/fslda/yaml/IA.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "UIPT" "/fslda/yaml/SC17.yaml"
+#mpiexec -n 5 python3 driver.py "IA" "res_ipt" "/fslda/yaml/IA.yaml"
+#mpiexec -n 5 python3 driver.py "OPENMC-runtime" "index_maker" "/fslda/yaml/OPENMC-runtime.yaml"
+#mpiexec -n 5 python3 driver.py "OPENMC-runtime" "IPT" "/fslda/yaml/OPENMC-runtime.yaml"
+#mpiexec -n 5 python3 driver.py "OPENMC-runtime" "UIPT" "/fslda/yaml/OPENMC-runtime.yaml"
+#mpiexec -n 5 python3 driver.py "OPENMC-runtime" "stacked_ipt" "/fslda/yaml/OPENMC-runtime.yaml"
+#mpiexec -n 5 python3 driver.py "OPENMC" "source_only" "/fslda/yaml/OPENMC.yaml"
+#mpiexec -n 5 python3 driver.py "IA" "target_only" "/fslda/yaml/IA.yaml"
+#mpiexec -n 5 python3 driver.py "IA" "tar_ipt" "/fslda/yaml/IA.yaml"
+#mpiexec -n 5 python3 driver.py "SC17" "UIPT" "/fslda/yaml/SC17.yaml"
+
+#mpiexec -n 5 python3 driver.py "no2" "linear_probing" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "fine_tuning" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "IPT" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "stacked_model" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "random_forrest" "/fslda/yaml/NO2_split2.yaml"
+
+#mpiexec -n 5 python3 driver.py "no2" "TransferIPT" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "k_regressor" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 1 python3 driver.py "no2" "target_only" "/fslda/yaml/NO2_split1.yaml"
+#mpiexec -n 1 python3 driver.py "no2" "target_only" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "stacked_model" "/fslda/yaml/NO2_split1.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "random_forrest" "/fslda/yaml/NO2_split1.yaml"
+
+
+#mpimpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-25.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "stacked_ipt" "/fslda/yaml/crime-config-12.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "linear_probing" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "fine_tuning" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "IPT" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "stacked_model" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "TransferIPT" "/fslda/yaml/NO2_split4.yaml"
+##mpiexec -n 5 python3 driver.py "NO2" "stacked_ipt" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "target_only" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "random_forrest" "/fslda/yaml/NO2_split4.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "k_regressor" "/fslda/yaml/NO2_split4.yaml"
+
+
+#mpiexec -n 5 python3 driver.py "no2" "stacked_ipt" "/fslda/yaml/NO2_split1.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "stacked_ipt" "/fslda/yaml/NO2_split2.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "stacked_ipt" "/fslda/yaml/NO2_split3.yaml"
+#mpiexec -n 5 python3 driver.py "no2" "stacked_ipt" "/fslda/yaml/NO2_split4.yaml"
+
+#mpiexec -n 5 python3 driver.py "airfoil" "fine_tuning" "/fslda/yaml/airfoil_split1.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "fine_tuning" "/fslda/yaml/airfoil_split2.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "fine_tuning" "/fslda/yaml/airfoil_split3.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "fine_tuning" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "linear_probing" "/fslda/yaml/airfoil_split1.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "linear_probing" "/fslda/yaml/airfoil_split2.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "linear_probing" "/fslda/yaml/airfoil_split3.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "linear_probing" "/fslda/yaml/airfoil_split4.yaml"
+
+
+#mpiexec -n 5 python3 driver.py "airfoil" "linear_probing" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "fine_tuning" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "IPT" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "stacked_model" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "TransferIPT" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "stacked_ipt" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "target_only" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "random_forrest" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "airfoil" "k_regressor" "/fslda/yaml/airfoil_split4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "source_only" "/fslda/yaml/skillcraft-config-1.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "index_maker" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "linear_probing" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "fine_tuning" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "IPT" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "stacked_model" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "TransferIPT" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "target_only" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "k_regressor" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "random_forrest" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "index_maker" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 1 python3 driver.py "LDRD" "source_only" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "linear_probing" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "fine_tuning" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "IPT" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "stacked_model" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "k_regressor" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "TransferIPT" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "stacked_ipt" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "TransferIPT" "/fslda/yaml/Lu.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "random_forrest" "/fslda/yaml/Kripke.yaml"
+#mpiexec -n 5 python3 driver.py "LDRD" "target_only" "/fslda/yaml/Lulesh.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "index_maker" "/fslda/yaml/crime-config-1.yaml"
+#mpiexec -n 5 python3 driver.py "crime" "index_maker" "/fslda/yaml/crime-config-8.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-3.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-4.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-5.yaml"
+#mpiexec -n 5 python3 driver.py "skillcraft" "KIPT" "/fslda/yaml/skillcraft-config-6.yaml"
+date
