@@ -1,0 +1,81 @@
+#!/bin/bash
+#SBATCH -A ASC23013
+#SBATCH -J SKILL           # Job name
+#SBATCH -o SKILL.o%j       # Name of stdout output file
+#SBATCH -e SKILL.e%j       # Name of stderr error file
+#SBATCH -p gpu-a100-dev    # Queue (partition) name
+#SBATCH -N 1               # Total # of nodes 
+#SBATCH -n 1               # Total # of ##mpi tasks
+#SBATCH -t 2:00:00         # Run time (hh:mm:ss
+
+
+date
+source ../../dev/bin/activate
+
+
+###mpiexec -n 1 python3 driver.py "AIRFOIL" "source_only" "/NP/yaml/AIRFOIL-config.yaml"
+###mpiexec -n 1 python3 driver.py "AIRFOIL" "class_caller" "/NP/yaml/AIRFOIL-config.yaml"
+
+###mpiexec -n 1 python3 driver.py "air" "source_only" "/NP/yaml/air-config.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "index_maker" "/NP/yaml/skillcraft-config-3_AHT.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_AHT.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_AHT.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "class_caller" "/NP/yaml/skillcraft-config-3_APC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "source_only" "/NP/yaml/skillcraft-config-3_APC.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_APC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "remask_caller" "/NP/yaml/skillcraft-config-3_APM.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_APM.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_CAU.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_CAU.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_CUM.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_CUM.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_GPC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_GPC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_MAC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_MAC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_MRC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_MRC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_NPC.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_NPC.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_SHT.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_SHT.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_TME.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_TME.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_WM.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_WM.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_UHT.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_UHT.yaml"
+#mpiexec -n 1 python3 driver.py "skillcraft" "caller" "/NP/yaml/skillcraft-config-3_UUM.yaml"
+mpiexec -n 1 python3 driver.py "skillcraft" "IPT" "/NP/yaml/skillcraft-config-3_UUM.yaml"
+
+
+
+
+
+
+
+
+
+
+
+
+##mpiexec -n 1 python3 driver.py "skillcraft" "class_caller" "/NP/yaml/skillcraft-config-6_GPC.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "IPT2" "/NP/yaml/skillcraft-config-6_GPC.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "class_caller" "/NP/yaml/skillcraft-config-6_APC.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "IPT2" "/NP/yaml/skillcraft-config-6_APC.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "class_caller" "/NP/yaml/skillcraft-config-6_UHT.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "IPT2" "/NP/yaml/skillcraft-config-6_UHT.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "class_caller" "/NP/yaml/skillcraft-config-6_CUM.yaml"
+##mpiexec -n 1 python3 driver.py "skillcraft" "IPT2" "/NP/yaml/skillcraft-config-6_CUM.yaml"
+
+
+
+
+
+
+###mpiexec -n 1 python3 driver.py "crime" "source_only" "/NP/yaml/crime-config-12.yaml"
+###mpiexec -n 1 python3 driver.py "crime" "IPT2" "/NP/yaml/crime-config-12.yaml"
+###mpiexec -n 1 python3 driver.py "NO2" "source_only" "/NP/yaml/NO2-config.yaml"
+###mpiexec -n 1 python3 driver.py "NO2" "IPT2" "/NP/yaml/NO2-config.yaml"
+
+date

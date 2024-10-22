@@ -1,12 +1,12 @@
 
-  src_path: '/data/CRIME/one-out/12/src/'
-  tar_path: '/data/CRIME/one-out/12/tar/'
-  model_path: '/fslda/models/'
-  result_path: '/fslda/results/'
-  csv_path: '/fslda/results/csv/crime/one-out/12/'
-  indices_path: '/fslda/results/indices/crime/12/'
-  fig_path: '/fslda/results/figs/crime/12/'
-  chck_path: '/fslda/chckpoints/'
+  src_path: '/data/NP/crime/src/'
+  tar_path: '/data/NP/crime/tar/'
+  model_path: '/NP/models/'
+  result_path: '/NP/results/'
+  csv_path: '/NP/results/csv/crime/12/'
+  indices_path: '/Np/results/indices/crime/12/'
+  fig_path: '/NP/results/figs/crime/12/'
+  chck_path: '/NP/chckpoints/'
   test_split: 0.20
   val_split: 0.25
   rand_state: 42 
@@ -31,6 +31,24 @@
     module_name: 'jay_test1'
     class_name: 'jay_test1'
     init_arg: 12
+  class_caller:
+    module_name: 'class_caller'
+    class_name: 'class_caller'
+    init_arg: 10
+    list_of_classes:
+      - 'Bagging'
+      - 'SVR'
+      - 'DecisionTree'
+      - 'XGBoost'
+      - 'nn'
+      - 'Transformer'
+    list_of_class_args:
+      - 10
+      - 10
+      - 10
+      - 10
+      - "/NP/yaml/crime-config-12.yaml"
+      - "/NP/yaml/crime-config-12.yaml"
   train_only:
     module_name: 'train_only'
     class_name: 'train_only'
@@ -81,6 +99,15 @@
       neurons: 100
       layers: 6
       lr: 0.01
+  IPT2:
+    module_name: 'IPT2'
+    class_name: 'IPT2'
+    init_arg: 100
+    IPT_params:
+      neurons: 100
+      layers: 6
+      lr: 0.01
+
   stacked_ipt:
     module_name: 'stacked_ipt'
     class_name: 'stacked_ipt'
@@ -145,7 +172,7 @@
   - transfer_learning
   - value 3
   
-  source_model: '/models/crime/one-out/12/crime-model.json'
-  source_model_weights: '/models/crime/one-out/12/crime-model'
+  source_model: '/models/NP/crime/12/crime-model.json'
+  source_model_weights: '/models/NP/crime/12/crime-model'
   source_model_params: '/fslda/results/txt/Source-model-on-target-crime-parameters.txt'
   source_model_prev_weights: '/models/x-crime-SourceModel'

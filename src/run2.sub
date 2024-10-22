@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH -A ASC23014
+#SBATCH -J air           # Job name
+#SBATCH -o air.o%j       # Name of stdout output file
+#SBATCH -e air.e%j       # Name of stderr error file
+#SBATCH -p development    # Queue (partition) name
+#SBATCH -N 1               # Total # of nodes 
+#SBATCH -n 1               # Total # of mpi tasks
+#SBATCH -t 2:00:00         # Run time (hh:mm:ss
+
+
+date
+source ../../dev/bin/activate
+
+
+#mpiexec -n 1 python3 driver.py "air" "source_only" "/NP/yaml/air-config.yaml"
+#mpiexec -n 1 python3 driver.py "air" "IPT2" "/NP/yaml/air-config.yaml"
+mpiexec -n 5 python3 driver.py "air" "index_maker" "/NP/yaml/air-config.yaml"
+mpiexec -n 1 python3 driver.py "air" "IPT" "/NP/yaml/air-config.yaml"
+#mpiexec -n 1 python3 driver.py "air" "class_caller" "/NP/yaml/air-config.yaml"
+#mpiexec -n 1 python3 driver.py "crime" "class_caller" "/NP/yaml/crime-config-12.yaml"
+#mpiexec -n 1 python3 driver.py "NO2" "class_caller" "/NP/yaml/NO2-config.yaml"
+#mpiexec -n 1 python3 driver.py "crime" "class_caller" "/NP/yaml/crime-config-12.yaml"
+
+#mpiexec -n 1 python3 driver.py "housing" "class_caller" "/NP/yaml/housing-config.yaml"
+date

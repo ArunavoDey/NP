@@ -12,7 +12,7 @@ import util
 import argparse
 import yaml
 import importlib
-import optuna
+#import optuna
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -34,27 +34,17 @@ import sys
 import os
 import os.path
 import csv
-import ensemRegressor
-import transfer_learning
-import optunatransformator1
-import stacked_model
-import k_regressor
-import random_forrest
-import IPT
-import train_only
-import source_only
+#import ensemRegressor
+#import optunatransformator1
+#import IPT
+#import source_only
 import mpi4py
-from transfer_learning import transfer_learning
-from stacked_model import stacked_model
-from k_regressor import k_regressor
-from random_forrest import random_forrest
-from IPT import IPT
-from train_only import train_only
-from source_only import source_only
+#from IPT import IPT
+#from source_only import source_only
 from mpi4py import MPI
 #np.random.seed(1)  
 #tf.random.set_seed(2)
-import optunannPOD
+#import optunannPOD
 import re    
 if __name__ == "__main__":
   comm = MPI.COMM_WORLD
@@ -64,7 +54,7 @@ if __name__ == "__main__":
   np.random.seed(1)  
   tf.random.set_seed(2)
   
-  os.chdir("../../../")
+  os.chdir("../../")
   parser = argparse.ArgumentParser()
   parser.add_argument('target_app', type=str,  help="name of the target domain")
   parser.add_argument('use_case', type=str,  help="which do want to fo from train_only, source_only, transfer_learning, random_forrest, k_regressor, IPT and stacked_model")
@@ -81,6 +71,7 @@ if __name__ == "__main__":
       src_x, src_y, tar_x, tar_y = loader.src_tx, loader.src_y, loader.tar_tx, loader.tar_y
   print("Src x shape before preprocessing")
   print(src_x.shape)
+  print(src_x)
   print("Tar_x shape before preprocessing")
   print(tar_x.shape)
   print("Src y before preprocessing")
@@ -107,6 +98,6 @@ if __name__ == "__main__":
       module = importlib.import_module(module_name)
       func = getattr(module, func_name)
       obj = func(use_case_specific_config["init_arg"])
-      obj(os.getcwd()+args.yaml, os.getcwd()+global_config["result_path"], test_samples, args.target_app, global_config["num_of_frozen_layers"], p, X_train, y_train, rank)
+      obj(os.getcwd()+args.yaml, os.getcwd()+global_config["result_path"], test_samples, args.target_app, global_config["num_of_frozen_layers"], loader, p, X_train, y_train, rank)
   except RuntimeError as e:
     print(e)

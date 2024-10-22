@@ -1,12 +1,12 @@
 
   src_path: '/data/CRIME/one-out/6/src/'
   tar_path: '/data/CRIME/one-out/6/tar/'
-  model_path: '/fslda/models/'
-  result_path: '/fslda/results/'
-  csv_path: '/fslda/results/csv/crime/one-out/6/'
-  indices_path: '/fslda/results/indices/crime/6/'
-  fig_path: '/fslda/results/figs/crime/6/'
-  chck_path: '/fslda/chckpoints/'
+  model_path: '/NP/models/'
+  result_path: '/NP/results/'
+  csv_path: '/NP/results/csv/crime/one-out/6/'
+  indices_path: '/NP/results/indices/crime/6/'
+  fig_path: '/NP/results/figs/crime/6/'
+  chck_path: '/NP/chckpoints/'
   test_split: 0.20
   val_split: 0.25
   rand_state: 42 

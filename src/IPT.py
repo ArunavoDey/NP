@@ -1,5 +1,5 @@
 import yaml
-import optuna
+#import optuna
 import pandas as pd
 import numpy as np
 import matplotlib
@@ -21,15 +21,18 @@ import sys
 import os
 import os.path
 import csv
-import ensemRegressor
-import optunatransformator1
+#import ensemRegressor
+#import optunatransformator1
+import optunatransformator_nc
 import util
-
+from sklearn.decomposition import PCA
+import XGBoost
+from XGBoost import XGBoost
 
 class IPT():
   def __init__(self, num ):
     self.num = int(num)
-  def __call__(self, config_yaml, result_path, test_samples, target_app, num_of_frozen_layers, processor,  source_features, source_labels, rank):
+  def __call__(self, config_yaml, result_path, test_samples, target_app, num_of_frozen_layers, looder, processor,  source_features, source_labels, rank):
     with open(config_yaml, "r") as f:
       global_config= yaml.load(f, Loader=yaml.FullLoader)
     csv_path = os.getcwd()+global_config["csv_path"]
@@ -57,14 +60,29 @@ class IPT():
         print(f"just loaded x2 {x2} for {fname}")
         rowArr = []
         rowMape = []
-        source_model = util.sourceModelLoader(source_features, source_labels, False, num_of_frozen_layers, False, global_config, target_app, False)
+        #source_model = util.sourceModelLoader(source_features, source_labels, False, num_of_frozen_layers, False, global_config, target_app, False)
+        pca = PCA(n_components=7)
+        xg = XGBoost(10)
+        source_model = util.sourceModelLoader(source_features, source_labels, False, num_of_frozen_layers, True, global_config, target_app, True)#xg.getModel(source_features, source_labels)
         callback2 = util.EarlyStoppingAtMinLoss(patience=40, arg_loss="loss")
-        transformator = optunatransformator1.Transformator(dim = source_features.shape[1], numOfLayersE = use_case_specific_config["layers"] , neuronsE = use_case_specific_config["neurons"] , activationE= "relu")
+
+        #transformator = optunatransformator_nc.Transformator(dim = source_features.shape[1], numOfLayersE = use_case_specific_config["layers"] , neuronsE = use_case_specific_config["neurons"] , activationE= "relu")
+        #ae = optunatransformator_nc.Autoencoder(intermediate_dim = source_features.shape[1], original_dim1 = source_features.shape[1])
+        transformator = optunatransformator_nc.Transformator(dim =source_features.shape[1], # 7,
+              #source_features.shape[1],
+              numOfLayersE = use_case_specific_config["layers"] , neuronsE = use_case_specific_config["neurons"] , activationE= "relu")
+        ae = optunatransformator_nc.Autoencoder(intermediate_dim =source_features.shape[1], original_dim1 = source_features.shape[1]-1)
         optimizer = tf.keras.optimizers.Adam(learning_rate= use_case_specific_config["lr"])
-        for epch in range(1000):
+        for epch in range(5000):
+          optunatransformator_nc.train( ae, transformator, source_model, optimizer, source_features, source_labels, training=True)
+
+        #transformator = optunatransformator1.Transformator(dim = source_features.shape[1], numOfLayersE = use_case_specific_config["layers"] , neuronsE = use_case_specific_config["neurons"] , activationE= "relu")
+        optimizer = tf.keras.optimizers.Adam(learning_rate= 0.001) #use_case_specific_config["lr"])
+        transformator = ae.encoder1
+        for epch in range(10):
           print(f"x2 {x2}")
           print(f"lb2 {lb2}")
-          optunatransformator1.train( transformator, source_model, optimizer, x2, lb2)
+          optunatransformator_nc.secondtrain( transformator, source_model, optimizer, x2, lb2)
         """
         predictions0 = source_model.predict(tar_x_test)
         pp0 = np.nan_to_num(predictions0)# tf.cast(predictions0, dtype = tf.float32)

@@ -20,7 +20,7 @@ class dataLoader():
   def loadData(self):
     i = 0
     for filename in os.listdir(self.src_path):
-      df = pd.read_csv(self.src_path+filename, low_memory=False)
+      df = pd.read_csv(self.src_path+filename, nrows=2000, low_memory=False)
       df = df.dropna()
       df.reset_index(drop=True, inplace=True)
       ff = filename.split(".")
@@ -48,7 +48,6 @@ class dataLoader():
     self.tar_data.reset_index(drop=True, inplace=True)
   def getData(self):
     return self.src_data, self.tar_data
-
   def getXY(self, colName, rowName, targetColumn):
     #if datasetName == "perfvar":
     #  application = rowName
